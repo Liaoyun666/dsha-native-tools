@@ -1,0 +1,67 @@
+{
+  "name": "dsha-native-tools",
+  "version": "1.0.0",
+  "description": "DeepSeek​ Harness 安卓端（DSHA）的原始设备能力工具集：通知、震动、剪贴板、拉起应用、手电、传感器、定位、导出文件、系统分享、原生提问，共 16 个一等公民工具。Native Android device capabilities as first-class DSH tools.",
+  "private": true,
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./bridge": "./lib/bridge.js",
+    "./tools": "./lib/tools.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "tools",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "dsha",
+    "android",
+    "device-bridge"
+  ],
+  "license": "MIT",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "dshhub": {
+      "schemaVersion": 1,
+      "displayName": "DSHA 原生设备工具",
+      "summary": "让 agent 直接操作那台安卓手机：通知、震动、剪贴板、拉起应用、手电、传感器、定位、导出文件。",
+      "categories": [
+        "android",
+        "device",
+        "tools"
+      ],
+      "surfaces": [
+        "host"
+      ],
+      "capabilities": {
+        "provides": [
+          "android-device-tools"
+        ],
+        "reads": [],
+        "network": [
+          "http://127.0.0.1:3090"
+        ]
+      },
+      "compatibility": {
+        "dsh": ">=0.1.5-rc.1",
+        "node": ">=20"
+      }
+    }
+  }
+}
